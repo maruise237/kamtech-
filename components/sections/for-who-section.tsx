@@ -1,46 +1,60 @@
 "use client";
 
-import { Check, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 
-const situations = [
-  "Vous répondez vous-même à vos messages WhatsApp le soir",
-  "Vous avez perdu des clients parce que vous n'étiez pas disponible",
-  "Votre équipe passe trop de temps sur des tâches sans valeur",
-  "Vous voulez scaler votre activité sans embaucher",
-  "Vous cherchez un partenaire technique qui parle votre langue, pas du jargon",
+const profiles = [
+  {
+    title: "Services & Consulting",
+    desc: "Automatisez la prise de RDV et la qualification de vos clients sur WhatsApp."
+  },
+  {
+    title: "Immobilier & Agences",
+    desc: "Envoyez instantanément vos catalogues et filtrez les curieux des acheteurs réels."
+  },
+  {
+    title: "E-commerce & Local",
+    desc: "Gérez le support client 24/7 et boostez les avis Google en automatique."
+  }
 ];
 
 export function ForWhoSection() {
   return (
-    <section className="bg-background py-24 md:py-32">
-      <div className="max-w-4xl mx-auto px-6 md:px-12">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6 text-center">
-          KAMTECH IA est fait pour vous si…
-        </h2>
-        <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-          Vous êtes une PME, un entrepreneur ou un indépendant et vous reconnaissez au moins une de ces situations :
-        </p>
-
-        <div className="space-y-4 mb-12 max-w-xl mx-auto">
-          {situations.map((s, i) => (
-            <div key={i} className="flex items-start gap-4 p-4 border border-border bg-secondary hover:border-primary/30">
-              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
-                <Check size={14} className="text-white" strokeWidth={3} />
-              </div>
-              <p className="text-foreground text-sm font-medium leading-relaxed">{s}</p>
+    <section className="bg-background py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+              Est-ce pour vous ?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Si vous gérez plus de 20 messages par jour ou si vos collaborateurs perdent du temps sur Excel, la réponse est oui.
+            </p>
+            <div className="space-y-4">
+              {profiles.map((p, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-4 p-4 border border-border bg-secondary hover:border-primary/30"
+                >
+                  <div className="bg-primary p-1 rounded-full text-primary-foreground">
+                    <CheckCircle2 size={16} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground">{p.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Link
-            href="#cta-final"
-            className="group inline-flex items-center gap-2 px-8 py-4 text-base font-semibold rounded-full bg-foreground text-background hover:opacity-90 transition-all shadow-lg"
-          >
-            Parler à un expert KAMTECH IA
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </div>
+          <div className="relative aspect-square bg-secondary border border-border overflow-hidden">
+             <div className="absolute inset-0 flex items-center justify-center p-12 text-center">
+                <div>
+                   <p className="text-2xl font-serif italic text-foreground mb-6">"L'IA n'est plus un luxe, c'est le moteur de ceux qui vont rester dans la course."</p>
+                   <div className="h-px w-12 bg-primary mx-auto mb-6" />
+                   <p className="text-sm font-bold uppercase tracking-widest text-primary">Kamtech Vision</p>
+                </div>
+             </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,57 +1,54 @@
 "use client";
 
-import { Search, Settings, BarChart3 } from "lucide-react";
-
 const steps = [
   {
-    number: "01",
-    icon: Search,
-    title: "Audit gratuit",
-    description: "On analyse vos processus, vos canaux de communication et vos points de friction. On identifie exactement où vous perdez du temps et de l'argent.",
+    num: "01",
+    title: "Audit & Stratégie",
+    desc: "Nous analysons vos goulots d'étranglement et définissons les flux à automatiser en priorité."
   },
   {
-    number: "02",
-    icon: Settings,
-    title: "Déploiement sur mesure",
-    description: "On configure votre système IA en fonction de votre secteur, votre ton, vos besoins spécifiques. Aucune connaissance technique requise de votre côté.",
+    num: "02",
+    title: "Architecture IA",
+    desc: "Développement de vos agents WhatsApp et configuration des workflows n8n sur mesure."
   },
   {
-    number: "03",
-    icon: BarChart3,
-    title: "Croissance mesurable",
-    description: "Vous suivez vos résultats en temps réel. Chaque semaine, votre système devient plus performant. Vous scalez sans recruter.",
+    num: "03",
+    title: "Déploiement Flash",
+    desc: "Mise en service en 7 à 10 jours. On forme vos équipes et on calibre les premiers retours."
   },
+  {
+    num: "04",
+    title: "Optimisation continue",
+    desc: "Suivi des performances et ajustement des algorithmes pour maximiser votre ROI."
+  }
 ];
 
 export function ProcessSection() {
   return (
-    <section id="processus" className="bg-foreground py-24 md:py-32 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 md:px-12">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6 text-center">
-          3 étapes pour automatiser<br className="hidden md:block" /> votre croissance
-        </h2>
-        <p className="text-gray-400 text-center mb-16 max-w-lg mx-auto">
-          Un processus simple, rapide et sans friction. Zéro compétence technique requise.
-        </p>
+    <section id="process" className="bg-foreground py-24 md:py-32 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-background mb-6">
+            L'IA en place en 7 jours
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            Pas de projet tunnel de 6 mois. On déploie vite, on mesure, on itère.
+          </p>
+        </div>
 
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent -translate-y-1/2" />
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((step, i) => (
-              <div key={i} className="relative group text-center">
-                {/* Step number */}
-                <div className="relative z-10 w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
-                  <step.icon size={32} className="text-primary-foreground" />
-                </div>
-
-                <span className="inline-block text-xs font-mono text-primary tracking-widest mb-3">{step.number}</span>
-                <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{step.description}</p>
+        <div className="grid md:grid-cols-4 gap-8">
+          {steps.map((step, i) => (
+            <div key={i} className="group relative">
+              <div className="text-6xl font-black text-white/5 mb-6 transition-colors group-hover:text-primary/20">
+                {step.num}
               </div>
-            ))}
-          </div>
+              <div className="w-12 h-1 bg-primary mb-6" />
+              <h3 className="text-xl font-bold text-primary-foreground mb-4">{step.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {step.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
