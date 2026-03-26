@@ -24,8 +24,8 @@ export function ForWhoSection() {
 
         <div className="space-y-4 mb-12 max-w-xl mx-auto">
           {situations.map((s, i) => (
-            <div key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-emerald-50 border border-emerald-100 transition-all hover:shadow-md hover:border-emerald-200">
-              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center mt-0.5">
+            <div key={i} className="flex items-start gap-4 p-4 border border-border bg-secondary hover:border-primary/30">
+              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
                 <Check size={14} className="text-white" strokeWidth={3} />
               </div>
               <p className="text-foreground text-sm font-medium leading-relaxed">{s}</p>

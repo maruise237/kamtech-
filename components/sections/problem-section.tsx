@@ -30,17 +30,17 @@ export function ProblemSection() {
           {pains.map((pain, i) => (
             <div
               key={i}
-              className="flex items-start gap-4 p-5 rounded-2xl bg-red-50 border border-red-100 transition-all hover:shadow-md"
+              className="flex items-start gap-4 p-5 border border-border bg-secondary transition-all hover:border-primary/30"
             >
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
-                <pain.icon size={20} className="text-red-500" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <pain.icon size={20} className="text-primary" />
               </div>
               <p className="text-foreground font-medium text-sm leading-relaxed pt-1.5">{pain.text}</p>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-lg font-medium text-emerald-600">
+        <p className="text-center text-lg font-medium text-primary">
           Il existe une solution. Et elle tourne déjà dans des centaines d&apos;entreprises. ↓
         </p>
       </div>

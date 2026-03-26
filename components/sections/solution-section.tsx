@@ -30,14 +30,14 @@ const services = [
 ];
 
 const colorMap: Record<string, { bg: string; iconBg: string; iconColor: string; border: string; badge: string }> = {
-  emerald: { bg: "bg-emerald-50", iconBg: "bg-emerald-100", iconColor: "text-emerald-600", border: "border-emerald-200", badge: "bg-emerald-100 text-emerald-700" },
-  blue: { bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-600", border: "border-blue-200", badge: "bg-blue-100 text-blue-700" },
-  purple: { bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-600", border: "border-purple-200", badge: "bg-purple-100 text-purple-700" },
+  emerald: { bg: "bg-accent",   iconBg: "bg-primary/10", iconColor: "text-primary",   border: "border-border",  badge: "bg-primary/10 text-primary" },
+  blue:    { bg: "bg-secondary", iconBg: "bg-primary/10", iconColor: "text-primary",   border: "border-border",  badge: "bg-muted text-muted-foreground" },
+  purple:  { bg: "bg-secondary", iconBg: "bg-primary/10", iconColor: "text-primary",   border: "border-border",  badge: "bg-muted text-muted-foreground" },
 };
 
 export function SolutionSection() {
   return (
-    <section id="solutions" className="bg-gray-50 py-24 md:py-32">
+    <section id="solutions" className="bg-secondary py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6">

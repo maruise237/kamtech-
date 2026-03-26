@@ -30,7 +30,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="bg-gray-50 py-24 md:py-32">
+    <section id="faq" className="bg-background py-24 md:py-32">
       <div className="max-w-3xl mx-auto px-6 md:px-12">
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-12 text-center">
           Questions fréquentes
@@ -40,7 +40,7 @@ export function FaqSection() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className={`rounded-2xl border transition-all duration-300 ${openIndex === i ? 'bg-white border-emerald-200 shadow-md' : 'bg-white border-gray-200 hover:border-gray-300'}`}
+              className={`rounded-2xl border transition-all duration-300 ${openIndex === i ? 'bg-white border-primary/30 shadow-md' : 'bg-white border-gray-200 hover:border-gray-300'}`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -49,7 +49,7 @@ export function FaqSection() {
                 <span className="text-base font-semibold text-foreground pr-4">{faq.q}</span>
                 <ChevronDown
                   size={20}
-                  className={`flex-shrink-0 text-muted-foreground transition-transform duration-300 ${openIndex === i ? 'rotate-180 text-emerald-500' : ''}`}
+                  className={`flex-shrink-0 text-muted-foreground transition-transform duration-300 ${openIndex === i ? 'rotate-180 text-primary' : ''}`}
                 />
               </button>
               <div
