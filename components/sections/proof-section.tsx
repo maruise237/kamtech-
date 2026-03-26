@@ -23,21 +23,21 @@ const testimonials = [
 
 export function ProofSection() {
   return (
-    <section id="resultats" className="bg-background py-24 md:py-32">
+    <section id="resultats" className="bg-bg-1 py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-16 text-center">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text-primary mb-16 text-center">
           Des résultats concrets,<br className="hidden md:block" /> pas des promesses
         </h2>
 
         {/* Stats */}
         <div className="grid md:grid-cols-3 gap-6 mb-20">
           {stats.map((stat, i) => (
-            <div key={i} className="text-center p-8 rounded-3xl bg-gray-950 border border-gray-800 transition-all hover:border-emerald-500/30">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                <stat.icon size={24} className="text-emerald-400" />
+            <div key={i} className="text-center p-8 rounded-none bg-bg-2 border border-border transition-all hover:border-brand/30">
+              <div className="w-12 h-12 rounded-none bg-brand/10 flex items-center justify-center mx-auto mb-4">
+                <stat.icon size={24} className="text-brand" />
               </div>
-              <p className="text-4xl md:text-5xl font-bold text-emerald-400 mb-3">{stat.value}</p>
-              <p className="text-sm text-gray-400 leading-relaxed">{stat.label}</p>
+              <p className="text-4xl md:text-5xl font-bold text-brand mb-3">{stat.value}</p>
+              <p className="text-sm text-text-secondary leading-relaxed">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -45,18 +45,18 @@ export function ProofSection() {
         {/* Testimonials */}
         <div className="grid md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
-            <div key={i} className="relative p-8 rounded-3xl bg-gray-50 border border-gray-200 transition-all hover:shadow-lg">
-              <Quote size={32} className="text-emerald-200 mb-4" />
-              <p className="text-foreground text-base leading-relaxed italic mb-6">
+            <div key={i} className="relative p-8 rounded-none bg-bg-2 border border-border transition-all hover:shadow-lg">
+              <Quote size={32} className="text-brand/20 mb-4" />
+              <p className="text-text-primary text-base leading-relaxed italic mb-6">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-sm">
+                <div className="w-10 h-10 rounded-none bg-brand/10 flex items-center justify-center text-brand font-bold text-sm">
                   {t.author.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-foreground">{t.author}</p>
-                  <p className="text-xs text-muted-foreground">{t.company}</p>
+                  <p className="text-sm font-semibold text-text-primary">{t.author}</p>
+                  <p className="text-xs text-text-muted">{t.company}</p>
                 </div>
               </div>
             </div>

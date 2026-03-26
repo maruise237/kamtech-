@@ -25,30 +25,30 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section id="processus" className="bg-gray-950 py-24 md:py-32 overflow-hidden">
+    <section id="processus" className="bg-bg-2 py-24 md:py-32 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6 text-center">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text-primary mb-6 text-center">
           3 étapes pour automatiser<br className="hidden md:block" /> votre croissance
         </h2>
-        <p className="text-gray-400 text-center mb-16 max-w-lg mx-auto">
+        <p className="text-text-secondary text-center mb-16 max-w-lg mx-auto">
           Un processus simple, rapide et sans friction. Zéro compétence technique requise.
         </p>
 
         <div className="relative">
           {/* Connecting line */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent -translate-y-1/2" />
+          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent -translate-y-1/2" />
 
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, i) => (
               <div key={i} className="relative group text-center">
                 {/* Step number */}
-                <div className="relative z-10 w-20 h-20 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-6 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40 transition-all duration-300">
-                  <step.icon size={32} className="text-emerald-400" />
+                <div className="relative z-10 w-20 h-20 rounded-none bg-bg-3 border border-border flex items-center justify-center mx-auto mb-6 group-hover:bg-brand/10 group-hover:border-brand/30 transition-all duration-300">
+                  <step.icon size={32} className="text-brand" />
                 </div>
 
-                <span className="inline-block text-xs font-mono text-emerald-500 tracking-widest mb-3">{step.number}</span>
-                <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{step.description}</p>
+                <span className="inline-block text-xs font-mono text-brand tracking-widest mb-3">{step.number}</span>
+                <h3 className="text-xl font-bold text-text-primary mb-4">{step.title}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>

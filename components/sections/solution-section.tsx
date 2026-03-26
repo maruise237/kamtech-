@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageSquare, Cog, Globe, ArrowRight } from "lucide-react";
+import { MessageSquare, Cog, Globe } from "lucide-react";
 
 const services = [
   {
@@ -9,7 +9,6 @@ const services = [
     subtitle: "Votre commercial disponible 24h/24 sur WhatsApp",
     description: "Votre chatbot répond instantanément, qualifie vos prospects, envoie vos tarifs, prend des rendez-vous — même à 3h du matin. Seuls les contacts sérieux arrivent à vous.",
     result: "Résultat typique : temps de réponse ÷10, conversions +30 à +60%",
-    color: "emerald",
   },
   {
     icon: Cog,
@@ -17,7 +16,6 @@ const services = [
     subtitle: "Éliminez les tâches répétitives de votre équipe",
     description: "Facturation, saisie de données, relances clients, rapports hebdomadaires — tout ce qui se fait manuellement peut être automatisé. On connecte vos outils (CRM, Google Sheets, email, WhatsApp) en un seul flux intelligent.",
     result: "Résultat typique : 10 à 13h gagnées par semaine et par collaborateur",
-    color: "blue",
   },
   {
     icon: Globe,
@@ -25,46 +23,38 @@ const services = [
     subtitle: "Un site qui capte, qualifie et déclenche l'automatisation",
     description: "Votre site n'est pas une vitrine. C'est le point d'entrée de votre système IA. Chaque formulaire, chaque clic déclenche une action automatique — guide envoyé, séquence WhatsApp lancée, lead enregistré dans votre CRM.",
     result: "Technologie : WordPress / Kadence — Optimisé conversion + SEO",
-    color: "purple",
   },
 ];
 
-const colorMap: Record<string, { bg: string; iconBg: string; iconColor: string; border: string; badge: string }> = {
-  emerald: { bg: "bg-emerald-50", iconBg: "bg-emerald-100", iconColor: "text-emerald-600", border: "border-emerald-200", badge: "bg-emerald-100 text-emerald-700" },
-  blue: { bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-600", border: "border-blue-200", badge: "bg-blue-100 text-blue-700" },
-  purple: { bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-600", border: "border-purple-200", badge: "bg-purple-100 text-purple-700" },
-};
-
 export function SolutionSection() {
   return (
-    <section id="solutions" className="bg-gray-50 py-24 md:py-32">
+    <section id="solutions" className="bg-bg-2 py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text-primary mb-6">
             KAMTECH IA : votre système de<br className="hidden md:block" /> croissance automatisé
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             Nous ne vendons pas des outils. Nous construisons des systèmes qui travaillent à votre place — sur WhatsApp, sur votre site, dans vos process internes.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, i) => {
-            const colors = colorMap[service.color];
             return (
               <div
                 key={i}
-                className={`group relative rounded-3xl border ${colors.border} ${colors.bg} p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+                className="group relative rounded-none border border-border bg-bg-1 p-8 transition-all duration-300 hover:shadow-md hover:border-brand/30"
               >
-                <div className={`w-14 h-14 rounded-2xl ${colors.iconBg} flex items-center justify-center mb-6`}>
-                  <service.icon size={28} className={colors.iconColor} />
+                <div className="w-14 h-14 rounded-none bg-bg-3 flex items-center justify-center mb-6">
+                  <service.icon size={28} className="text-brand" />
                 </div>
 
-                <h3 className="text-xl font-bold text-foreground mb-2">{service.title}</h3>
-                <p className="text-sm font-medium text-muted-foreground mb-4">{service.subtitle}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">{service.description}</p>
+                <h3 className="text-xl font-bold text-text-primary mb-2">{service.title}</h3>
+                <p className="text-sm font-medium text-text-secondary mb-4">{service.subtitle}</p>
+                <p className="text-sm text-text-muted leading-relaxed mb-6">{service.description}</p>
 
-                <div className={`inline-block px-3 py-1.5 rounded-full text-xs font-semibold ${colors.badge}`}>
+                <div className="inline-block px-3 py-1.5 rounded-none text-xs font-semibold bg-brand-subtle text-brand">
                   {service.result}
                 </div>
               </div>

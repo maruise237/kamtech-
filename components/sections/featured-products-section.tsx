@@ -17,14 +17,14 @@ const features = [
 
 export function FeaturedProductsSection() {
   return (
-    <section id="technology" className="relative bg-background py-20 md:py-32">
+    <section id="technology" className="relative bg-bg-1 py-20 md:py-32">
       <div className="px-4 md:px-12 lg:px-20">
         {/* Bento Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full max-w-7xl mx-auto auto-rows-[180px] md:auto-rows-[220px]">
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className={`relative overflow-hidden rounded-lg border border-gray-200 ${feature.span}`}
+              className={`relative overflow-hidden rounded-none border border-border bg-bg-2 ${feature.span}`}
             >
               <FadeImage
                 src={feature.image || "/placeholder.svg"}

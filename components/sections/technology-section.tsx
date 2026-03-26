@@ -27,7 +27,7 @@ function ScrollRevealText({ text }: { text: string }) {
   const words = text.split(" ");
   
   return (
-    <p ref={containerRef} className="text-3xl font-semibold leading-snug text-white md:text-4xl lg:text-5xl">
+    <p ref={containerRef} className="text-3xl font-semibold leading-snug text-text-primary md:text-4xl lg:text-5xl">
       {words.map((word, index) => {
         const appearProgress = progress * (words.length + 1);
         const wordAppearProgress = Math.max(0, Math.min(1, appearProgress - index));
@@ -87,10 +87,8 @@ export function TechnologySection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const titleOpacity = Math.max(0, 1 - (scrollProgress / 0.2));
   const imageProgress = Math.max(0, Math.min(1, (scrollProgress - 0.2) / 0.8));
   const centerWidth = 100 - (imageProgress * 58);
-  const centerHeight = 100 - (imageProgress * 30);
   const sideWidth = imageProgress * 22;
   const sideOpacity = imageProgress;
   const sideTranslateLeft = -100 + (imageProgress * 100);
@@ -98,24 +96,24 @@ export function TechnologySection() {
   const gap = imageProgress * 16;
 
   return (
-    <section ref={sectionRef} className="relative bg-foreground">
+    <section ref={sectionRef} className="relative bg-bg-1">
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="flex h-full w-full items-center justify-center">
           <div className="relative flex h-full w-full items-stretch justify-center" style={{ gap: `${gap}px`, padding: `${imageProgress * 16}px` }}>
             
-            <div className="relative overflow-hidden will-change-transform" style={{ width: `${sideWidth}%`, height: "100%", transform: `translateX(${sideTranslateLeft}%)`, opacity: sideOpacity }}>
+            <div className="relative overflow-hidden will-change-transform rounded-none border border-border" style={{ width: `${sideWidth}%`, height: "100%", transform: `translateX(${sideTranslateLeft}%)`, opacity: sideOpacity }}>
               {sideImages.filter(img => img.position === "left").map((img, idx) => (
                 <Image key={idx} src={img.src || "/placeholder.svg"} alt={img.alt} fill className="object-cover" />
               ))}
             </div>
 
-            <div className="relative overflow-hidden will-change-transform" style={{ width: `${centerWidth}%`, height: "100%", flex: "0 0 auto" }}>
+            <div className="relative overflow-hidden will-change-transform rounded-none border border-border" style={{ width: `${centerWidth}%`, height: "100%", flex: "0 0 auto" }}>
               <Image src="/images/mono-1.png" alt="Chatbot WhatsApp KAMTECH IA" fill className="object-cover" style={{ opacity: 1 }} />
               <Image src="/images/mono-2.png" alt="Automatisation processus PME" fill className="absolute inset-0 object-cover" style={{ opacity: Math.max(0, Math.min(1, (scrollProgress - 0.1) / 0.2)), transition: 'opacity 0.3s ease' }} />
               <Image src="/images/mono-3.png" alt="Dashboard résultats IA" fill className="absolute inset-0 object-cover" style={{ opacity: Math.max(0, Math.min(1, (scrollProgress - 0.4) / 0.2)), transition: 'opacity 0.3s ease' }} />
               <Image src="/images/mono-4.png" alt="Système IA complet PME" fill className="absolute inset-0 object-cover" style={{ opacity: Math.max(0, Math.min(1, (scrollProgress - 0.7) / 0.2)), transition: 'opacity 0.3s ease' }} />
               
-              <div className="absolute inset-0 bg-foreground/40" />
+              <div className="absolute inset-0 bg-bg-1/40" />
               
               <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
                 {textCycles.map((text, cycleIndex) => {
@@ -124,7 +122,7 @@ export function TechnologySection() {
                   const words = text.split(" ");
                   
                   return (
-                    <h2 key={cycleIndex} className="absolute max-w-3xl font-medium leading-tight tracking-tight text-white md:text-5xl lg:text-7xl text-5xl">
+                    <h2 key={cycleIndex} className="absolute max-w-3xl font-medium leading-tight tracking-tight text-text-inverse md:text-5xl lg:text-7xl text-5xl">
                       {words.map((w, wordIndex) => {
                         let wordOpacity = 0;
                         let wordBlur = 40;
@@ -152,7 +150,7 @@ export function TechnologySection() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden will-change-transform" style={{ width: `${sideWidth}%`, height: "100%", transform: `translateX(${sideTranslateRight}%)`, opacity: sideOpacity }}>
+            <div className="relative overflow-hidden will-change-transform rounded-none border border-border" style={{ width: `${sideWidth}%`, height: "100%", transform: `translateX(${sideTranslateRight}%)`, opacity: sideOpacity }}>
               {sideImages.filter(img => img.position === "right").map((img, idx) => (
                 <Image key={idx} src={img.src || "/placeholder.svg"} alt={img.alt} fill className="object-cover" />
               ))}
@@ -163,7 +161,7 @@ export function TechnologySection() {
 
       <div className="h-[400vh]" />
 
-      <div ref={textSectionRef} className="relative overflow-hidden px-6 py-24 md:px-12 md:py-32 lg:px-20 lg:py-40 bg-black">
+      <div ref={textSectionRef} className="relative overflow-hidden px-6 py-24 md:px-12 md:py-32 lg:px-20 lg:py-40 bg-bg-1">
         <div className="absolute top-0 left-0 right-0 z-0 pointer-events-none" style={{ height: '150px', background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)' }} />
         <div className="relative z-10 mx-auto max-w-4xl">
           <ScrollRevealText text={descriptionText} />
