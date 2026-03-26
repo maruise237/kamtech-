@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageSquare, Cog, Globe, ArrowRight } from "lucide-react";
+import { MessageSquare, Cog, Globe } from "lucide-react";
 
 const services = [
   {
@@ -29,15 +29,15 @@ const services = [
   },
 ];
 
-const colorMap: Record<string, { bg: string; iconBg: string; iconColor: string; border: string; badge: string }> = {
-  emerald: { bg: "bg-emerald-50", iconBg: "bg-emerald-100", iconColor: "text-emerald-600", border: "border-emerald-200", badge: "bg-emerald-100 text-emerald-700" },
-  blue: { bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-600", border: "border-blue-200", badge: "bg-blue-100 text-blue-700" },
-  purple: { bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-600", border: "border-purple-200", badge: "bg-purple-100 text-purple-700" },
-};
+const colorMap = {
+  emerald: { bg: "bg-accent",   iconBg: "bg-primary/10", iconColor: "text-primary",   border: "border-border",  badge: "bg-primary/10 text-primary" },
+  blue:    { bg: "bg-secondary", iconBg: "bg-primary/10", iconColor: "text-primary",   border: "border-border",  badge: "bg-muted text-muted-foreground" },
+  purple:  { bg: "bg-secondary", iconBg: "bg-primary/10", iconColor: "text-primary",   border: "border-border",  badge: "bg-muted text-muted-foreground" },
+}
 
 export function SolutionSection() {
   return (
-    <section id="solutions" className="bg-gray-50 py-24 md:py-32">
+    <section id="solutions" className="bg-background py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
@@ -50,13 +50,13 @@ export function SolutionSection() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, i) => {
-            const colors = colorMap[service.color];
+            const colors = colorMap[service.color as keyof typeof colorMap];
             return (
               <div
                 key={i}
-                className={`group relative rounded-3xl border ${colors.border} ${colors.bg} p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
+                className={`group relative rounded-none border ${colors.border} ${colors.bg} p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30`}
               >
-                <div className={`w-14 h-14 rounded-2xl ${colors.iconBg} flex items-center justify-center mb-6`}>
+                <div className={`w-14 h-14 rounded-none ${colors.iconBg} flex items-center justify-center mb-6`}>
                   <service.icon size={28} className={colors.iconColor} />
                 </div>
 
@@ -64,7 +64,7 @@ export function SolutionSection() {
                 <p className="text-sm font-medium text-muted-foreground mb-4">{service.subtitle}</p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">{service.description}</p>
 
-                <div className={`inline-block px-3 py-1.5 rounded-full text-xs font-semibold ${colors.badge}`}>
+                <div className={`inline-block px-3 py-1.5 rounded-none text-xs font-semibold ${colors.badge}`}>
                   {service.result}
                 </div>
               </div>

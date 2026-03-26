@@ -1,48 +1,59 @@
 "use client";
 
-import { AlertTriangle, Clock, Users, Eye } from "lucide-react";
+import { XCircle, Clock, Users, ZapOff } from "lucide-react";
 
-const pains = [
-  { icon: Clock, text: "Prospects qui disparaissent faute de réponse rapide" },
-  { icon: Users, text: "Équipes épuisées par les tâches répétitives" },
-  { icon: AlertTriangle, text: "Suivi client chaotique, relances oubliées" },
-  { icon: Eye, text: "Aucune visibilité sur ce qui se passe dans vos conversations" },
+const problems = [
+  {
+    icon: XCircle,
+    title: "Leads perdus",
+    desc: "Un prospect qui attend plus de 15 minutes pour un tarif est un prospect perdu pour la concurrence."
+  },
+  {
+    icon: Clock,
+    title: "Tâches répétitives",
+    desc: "Votre équipe passe 40% de son temps à copier-coller des données ou à répondre aux mêmes questions."
+  },
+  {
+    icon: Users,
+    title: "Suivi inexistant",
+    desc: "80% des ventes nécessitent 5 relances. La plupart des PME n'en font aucune par manque de temps."
+  },
+  {
+    icon: ZapOff,
+    title: "Processus manuels",
+    desc: "La paperasse et les erreurs humaines freinent votre croissance et frustrent vos clients."
+  }
 ];
 
 export function ProblemSection() {
   return (
-    <section id="problem" className="bg-background py-24 md:py-32">
-      <div className="max-w-4xl mx-auto px-6 md:px-12">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-8 text-center">
-          Votre entreprise perd de l&apos;argent<br className="hidden md:block" /> chaque jour sans le savoir
-        </h2>
-
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            Un prospect vous contacte sur WhatsApp à 22h. Personne ne répond. Le lendemain matin, il a signé avec votre concurrent.
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed">
-            C&apos;est le problème n°1 des PME aujourd&apos;hui : trop de leads entrants, pas assez de réactivité. Vos équipes passent des heures à recopier des données, répondre aux mêmes questions, relancer manuellement — pendant que les vraies opportunités filent.
+    <section className="bg-background py-24 border-y border-border">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+            Le coût de l'ancien modèle
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            Travailler "à la main" en 2024 n'est plus une option. C'est un handicap qui bride votre rentabilité.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4 mb-12">
-          {pains.map((pain, i) => (
+        <div className="grid md:grid-cols-2 gap-4">
+          {problems.map((p, i) => (
             <div
               key={i}
-              className="flex items-start gap-4 p-5 rounded-2xl bg-red-50 border border-red-100 transition-all hover:shadow-md"
+              className="flex items-start gap-4 p-5 border border-border bg-secondary transition-all hover:border-primary/30"
             >
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
-                <pain.icon size={20} className="text-red-500" />
+              <div className="bg-primary/10 p-2 text-primary">
+                <p.icon size={24} />
               </div>
-              <p className="text-foreground font-medium text-sm leading-relaxed pt-1.5">{pain.text}</p>
+              <div>
+                <h3 className="font-bold text-foreground text-lg mb-1">{p.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
+              </div>
             </div>
           ))}
         </div>
-
-        <p className="text-center text-lg font-medium text-emerald-600">
-          Il existe une solution. Et elle tourne déjà dans des centaines d&apos;entreprises. ↓
-        </p>
       </div>
     </section>
   );
