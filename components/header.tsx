@@ -3,72 +3,89 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+
+const navLinks = [
+  { name: "Problème", href: "#problem" },
+  { name: "Solutions", href: "#solutions" },
+  { name: "Résultats", href: "#resultats" },
+  { name: "Processus", href: "#processus" },
+  { name: "FAQ", href: "#faq" },
+];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header 
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-3xl transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-md rounded-full" : "bg-transparent"}`}
-      style={{
-        boxShadow: isScrolled ? "rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px" : "none"
-      }}
+    <header
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-3xl transition-all duration-300 ${isScrolled ? "bg-bg-1/80 backdrop-blur-md rounded-none border border-border shadow-md" : "bg-transparent"}`}
     >
-      <div className="flex items-center justify-between transition-all duration-300 px-2 pl-5 py-2">
-        <Link href="#hero" className="text-lg font-medium tracking-tight transition-colors duration-300 text-foreground">
-          KAMTECH IA
+      <div className="flex items-center justify-between px-6 py-4">
+        <Link href="/" className="text-xl font-bold tracking-tighter text-text-primary">
+          KAMTECH<span className="text-brand">IA</span>
         </Link>
 
-        <nav className="hidden items-center gap-10 md:flex">
-          <Link href="#products" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Solutions</Link>
-          <Link href="#technology" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Résultats</Link>
-          <Link href="#gallery" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Processus</Link>
-          <Link href="#accessories" className="text-sm transition-colors text-muted-foreground hover:text-foreground">Offres</Link>
-          <Link href="#about" className="text-sm transition-colors text-muted-foreground hover:text-foreground">À propos</Link>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-text-secondary hover:text-brand transition-colors"
+            >
+              {link.name}
+            </Link>
+          ))}
+          <ThemeToggle />
+          <Link
+            href="#cta-final"
+            className="px-4 py-2 text-sm font-medium transition-all rounded-none bg-text-primary text-text-inverse hover:opacity-80"
+          >
+            Démarrer
+          </Link>
         </nav>
 
-        <div className="hidden items-center gap-6 md:flex">
-          <Link
-            href="#reserve"
-            className="px-4 py-2 text-sm font-medium transition-all rounded-full bg-foreground text-background hover:opacity-80"
+        {/* Mobile Toggle */}
+        <div className="flex items-center gap-4 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-text-primary focus:outline-none"
           >
-            Audit gratuit
-          </Link>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-
-        <button
-          type="button"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="transition-colors md:hidden text-foreground"
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
 
-      {isMenuOpen && (
-        <div className="border-t border-border bg-background px-6 py-8 md:hidden rounded-b-2xl">
+      {/* Mobile Nav */}
+      {isOpen && (
+        <div className="border-t border-border bg-bg-1 px-6 py-8 md:hidden rounded-none shadow-xl">
           <nav className="flex flex-col gap-6">
-            <Link href="#products" className="text-lg text-foreground" onClick={() => setIsMenuOpen(false)}>Solutions</Link>
-            <Link href="#technology" className="text-lg text-foreground" onClick={() => setIsMenuOpen(false)}>Résultats</Link>
-            <Link href="#gallery" className="text-lg text-foreground" onClick={() => setIsMenuOpen(false)}>Processus</Link>
-            <Link href="#accessories" className="text-lg text-foreground" onClick={() => setIsMenuOpen(false)}>Offres</Link>
-            <Link href="#about" className="text-lg text-foreground" onClick={() => setIsMenuOpen(false)}>À propos</Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-medium text-text-primary hover:text-brand transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
             <Link
-              href="#reserve"
-              className="mt-4 bg-foreground px-5 py-3 text-center text-sm font-medium text-background rounded-full"
-              onClick={() => setIsMenuOpen(false)}
+              href="#cta-final"
+              onClick={() => setIsOpen(false)}
+              className="mt-4 bg-text-primary px-5 py-3 text-center text-sm font-medium text-text-inverse rounded-none"
             >
-              Audit gratuit
+              Parler à un expert
             </Link>
           </nav>
         </div>

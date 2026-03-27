@@ -64,7 +64,7 @@ export function PhilosophySection() {
   }, [updateTransforms]);
 
   return (
-    <section id="products" className="bg-background">
+    <section id="products" className="bg-bg-1">
       {/* Scroll-Animated Title Rotation */}
       <div ref={sectionRef} className="relative" style={{ height: "200vh" }}>
         <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
@@ -103,7 +103,7 @@ export function PhilosophySection() {
                   return (
                     <h2 
                       key={index}
-                      className="absolute inset-0 flex items-center justify-center text-[8vw] sm:text-[7vw] font-medium leading-tight tracking-tighter text-foreground md:text-[6vw] lg:text-[5vw] text-center px-4"
+                      className="absolute inset-0 flex items-center justify-center text-[8vw] sm:text-[7vw] font-medium leading-tight tracking-tighter text-text-primary md:text-[6vw] lg:text-[5vw] text-center px-4"
                       style={{
                         transform: `rotateX(${rotateX}deg) translateZ(0)`,
                         opacity,
@@ -128,7 +128,7 @@ export function PhilosophySection() {
       <div ref={descriptionRef} className="px-6 pt-8 pb-20 md:px-12 md:pt-12 md:pb-28 lg:px-20 lg:pt-16 lg:pb-36">
         <div className="text-center">
           
-          <p className="mt-8 leading-relaxed text-muted-foreground text-3xl text-center">
+          <p className="mt-8 leading-relaxed text-text-secondary text-3xl text-center">
             {("Pendant que vous dormez, votre concurrent répond à vos clients. KAMTECH IA automatise vos ventes, votre support et vos processus — 24h/24, sans recruter.").split(" ").map((word, index, array) => {
               const wordProgress = Math.max(0, Math.min(1, (descriptionProgress * array.length) - index));
               const opacity = wordProgress;

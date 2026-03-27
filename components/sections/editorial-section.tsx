@@ -42,7 +42,7 @@ export function EditorialSection() {
   const parallaxY = (scrollProgress - 0.5) * 30;
 
   return (
-    <section className="bg-background">
+    <section className="bg-bg-1">
       <div className="flex items-center justify-center gap-6 pb-20" />
 
       {/* Full-width Video with Parallax */}
@@ -63,8 +63,8 @@ export function EditorialSection() {
       <div className="grid grid-cols-2 border-t border-border md:grid-cols-4">
         {specs.map((spec) => (
           <div key={spec.label} className="border-b border-r border-border p-8 text-center last:border-r-0 md:border-b-0">
-            <p className="mb-2 text-xs uppercase tracking-widest text-muted-foreground">{spec.label}</p>
-            <p className="font-medium text-foreground text-5xl">{spec.value}</p>
+            <p className="mb-2 text-xs uppercase tracking-widest text-text-muted">{spec.label}</p>
+            <p className="font-medium text-text-primary text-5xl">{spec.value}</p>
           </div>
         ))}
       </div>

@@ -65,12 +65,11 @@ export function HeroSection() {
   const sideOpacity = imageProgress;
   const sideTranslateLeft = -100 + (imageProgress * 100);
   const sideTranslateRight = 100 - (imageProgress * 100);
-  const borderRadius = 0;
   const gap = imageProgress * 8;
   const sideTranslateY = -(imageProgress * 15);
 
   return (
-    <section ref={sectionRef} className="relative bg-background">
+    <section ref={sectionRef} className="relative bg-bg-1">
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="flex h-full w-full items-center justify-center">
           <div 
@@ -91,10 +90,9 @@ export function HeroSection() {
               {sideImages.filter(img => img.position === "left").map((img, idx) => (
                 <div 
                   key={idx} 
-                  className="relative h-full overflow-hidden will-change-transform"
+                  className="relative h-full overflow-hidden will-change-transform rounded-none border border-border"
                   style={{
                     flex: img.span,
-                    borderRadius: `${borderRadius}px`,
                   }}
                 >
                   <Image
@@ -109,12 +107,11 @@ export function HeroSection() {
 
             {/* Main Hero Image - Center */}
             <div 
-              className="relative overflow-hidden will-change-transform"
+              className="relative overflow-hidden will-change-transform rounded-none border border-border"
               style={{
                 width: `${centerWidth}%`,
                 height: `${centerHeight}%`,
                 flex: "0 0 auto",
-                borderRadius: `${borderRadius}px`,
               }}
             >
               {/* Text Front - Fades out first */}
@@ -122,7 +119,7 @@ export function HeroSection() {
                 className="absolute inset-0 z-20 flex items-center justify-center"
                 style={{ opacity: textOpacity, transform: 'translateY(-200px)' }}
               >
-                <h1 className="whitespace-nowrap text-[20vw] font-bold leading-[0.8] tracking-tighter text-white">
+                <h1 className="whitespace-nowrap text-[20vw] font-bold leading-[0.8] tracking-tighter text-text-primary">
                   {word.split("").map((letter, index) => (
                     <span
                       key={index}
@@ -161,10 +158,9 @@ export function HeroSection() {
               {sideImages.filter(img => img.position === "right").map((img, idx) => (
                 <div 
                   key={idx} 
-                  className="relative h-full overflow-hidden will-change-transform"
+                  className="relative h-full overflow-hidden will-change-transform rounded-none border border-border"
                   style={{
                     flex: img.span,
-                    borderRadius: `${borderRadius}px`,
                   }}
                 >
                   <Image
@@ -186,7 +182,7 @@ export function HeroSection() {
         className="pointer-events-none fixed bottom-0 left-0 right-0 z-10 px-6 pb-12 md:px-12 md:pb-16 lg:px-20 lg:pb-20"
         style={{ opacity: textOpacity }}
       >
-        <p className="mx-auto max-w-2xl text-center text-2xl leading-relaxed text-white md:text-3xl lg:text-[2.5rem] lg:leading-snug">
+        <p className="mx-auto max-w-2xl text-center text-2xl leading-relaxed text-text-primary md:text-3xl lg:text-[2.5rem] lg:leading-snug">
           Automatisation IA &
           <br />
           Chatbots WhatsApp pour PME.

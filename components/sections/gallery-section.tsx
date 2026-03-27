@@ -44,7 +44,7 @@ export function GallerySection() {
   const easedFullscreenProgress = 1 - Math.pow(1 - fullscreenProgress, 3);
 
   return (
-    <section id="gallery" ref={galleryRef} className="relative bg-black" style={{ minHeight: `${(images.length + 1) * 100}vh` }}>
+    <section id="gallery" ref={galleryRef} className="relative bg-bg-1" style={{ minHeight: `${(images.length + 1) * 100}vh` }}>
       <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center px-4">
         <div className="relative w-full max-w-5xl h-[70vh] md:h-[80vh]">
           {images.map((image, index) => {
@@ -60,7 +60,6 @@ export function GallerySection() {
               scale = normalScale + (Math.max(0, stackProgress - 0.8) * 5) * (expandedScale - normalScale);
             }
             const zIndex = index;
-            const borderRadius = isLast && easedFullscreenProgress > 0.3 ? (1 - easedFullscreenProgress) * 16 : undefined;
             
             return (
               <div key={index} className="absolute inset-0 flex items-center justify-center" style={{
@@ -70,7 +69,7 @@ export function GallerySection() {
                 backfaceVisibility: 'hidden',
                 willChange: 'transform, opacity',
               }}>
-                <div className="relative w-full h-full overflow-hidden rounded-xl md:rounded-2xl" style={{ borderRadius: borderRadius !== undefined ? `${borderRadius}px` : undefined }}>
+                <div className="relative w-full h-full overflow-hidden rounded-none border border-border bg-bg-2">
                   <Image src={image.src || "/placeholder.svg"} alt={image.alt} fill className="object-cover" priority={index < 3} />
                 </div>
               </div>
