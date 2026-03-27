@@ -1,6 +1,9 @@
 "use client";
 
 import { Search, Settings, BarChart3 } from "lucide-react";
+import { useRef } from "react";
+import { useScrollProgress } from "@/hooks/use-scroll-progress";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const steps = [
   {
@@ -24,15 +27,22 @@ const steps = [
 ];
 
 export function ProcessSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const progress = useScrollProgress(sectionRef);
+
   return (
-    <section id="processus" className="bg-bg-2 py-24 md:py-32 overflow-hidden">
+    <section id="processus" ref={sectionRef} className="bg-bg-2 py-24 md:py-32 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text-primary mb-6 text-center">
-          3 étapes pour automatiser<br className="hidden md:block" /> votre croissance
-        </h2>
-        <p className="text-text-secondary text-center mb-16 max-w-lg mx-auto">
-          Un processus simple, rapide et sans friction. Zéro compétence technique requise.
-        </p>
+        <ScrollReveal progress={progress} offset={40} delay={0.1}>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text-primary mb-6 text-center">
+            3 étapes pour automatiser<br className="hidden md:block" /> votre croissance
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal progress={progress} offset={30} delay={0.2}>
+          <p className="text-text-secondary text-center mb-16 max-w-lg mx-auto">
+            Un processus simple, rapide et sans friction. Zéro compétence technique requise.
+          </p>
+        </ScrollReveal>
 
         <div className="relative">
           {/* Connecting line */}
@@ -40,16 +50,24 @@ export function ProcessSection() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, i) => (
-              <div key={i} className="relative group text-center">
-                {/* Step number */}
-                <div className="relative z-10 w-20 h-20 rounded-none bg-bg-3 border border-border flex items-center justify-center mx-auto mb-6 group-hover:bg-brand/10 group-hover:border-brand/30 transition-all duration-300">
-                  <step.icon size={32} className="text-brand" />
-                </div>
+              <ScrollReveal
+                key={i}
+                progress={progress}
+                offset={100}
+                delay={0.3 + (i * 0.1)}
+                speed={0.9 + (i * 0.1)}
+              >
+                <div className="relative group text-center h-full">
+                  {/* Step number */}
+                  <div className="relative z-10 w-20 h-20 rounded-none bg-bg-3 border border-border flex items-center justify-center mx-auto mb-6 group-hover:bg-brand/10 group-hover:border-brand/30 transition-all duration-300">
+                    <step.icon size={32} className="text-brand" />
+                  </div>
 
-                <span className="inline-block text-xs font-mono text-brand tracking-widest mb-3">{step.number}</span>
-                <h3 className="text-xl font-bold text-text-primary mb-4">{step.title}</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">{step.description}</p>
-              </div>
+                  <span className="inline-block text-xs font-mono text-brand tracking-widest mb-3">{step.number}</span>
+                  <h3 className="text-xl font-bold text-text-primary mb-4">{step.title}</h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">{step.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
