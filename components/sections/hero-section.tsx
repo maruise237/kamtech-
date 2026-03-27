@@ -114,9 +114,9 @@ export function HeroSection() {
                 flex: "0 0 auto",
               }}
             >
-              {/* Text Front - Fades out first */}
+              {/* Text Background - Fades out first */}
               <div 
-                className="absolute inset-0 z-20 flex items-center justify-center"
+                className="absolute inset-0 z-0 flex items-center justify-center"
                 style={{ opacity: textOpacity, transform: 'translateY(-200px)' }}
               >
                 <h1 className="whitespace-nowrap text-[20vw] font-bold leading-[0.8] tracking-tighter text-text-primary">
