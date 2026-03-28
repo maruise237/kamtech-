@@ -6,6 +6,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  outputFileTracingRoot: './',
 }
+
 
 export default nextConfig
