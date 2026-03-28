@@ -4,26 +4,29 @@
 @custom-variant dark (&:is([data-theme="dark"] *));
 
 :root {
+  --brand: #3D3FCC;
+  --bg-1: #FFFFFF;
+  --bg-2: #FAFAFA;
+  --bg-3: #F4F4F6;
+  --text-primary: #0A0A0B;
+  --text-secondary: #52525B;
+  --background: var(--bg-1);
+  --foreground: var(--text-primary);
+  --primary: var(--brand);
+  --border: #E4E4E7;
+  --ring: var(--brand);
+
   /* --- Brand (désaturé, posé) --- */
-  --brand:            #3D3FCC;   /* Bleu logo adouci, -10% saturation */
   --brand-hover:      #2E30A8;
-  --brand-subtle:     #F0F0FD;   /* Teinté bleu ultra-léger */
+  --brand-subtle:     #F0F0FD;
   --brand-muted:      #E4E4F8;
 
-  /* --- Backgrounds (règle 60/30/10) --- */
-  --bg-1:             #FFFFFF;   /* Surface principale */
-  --bg-2:             #FAFAFA;   /* Surface secondaire */
-  --bg-3:             #F4F4F6;   /* Hover / card muted */
-
   /* --- Text (noir Vercel-style) --- */
-  --text-primary:     #0A0A0B;   /* Near-black */
-  --text-secondary:   #52525B;   /* Zinc-600 */
-  --text-muted:       #A1A1AA;   /* Zinc-400 */
+  --text-muted:       #A1A1AA;
   --text-inverse:     #FFFFFF;
   --text-brand:       #3D3FCC;
 
   /* --- Borders --- */
-  --border-token:     #E4E4E7;   /* Zinc-200 */
   --border-strong:    #D1D1D6;
   --border-brand:     #3D3FCC;
 
@@ -38,13 +41,10 @@
   --shadow-lg:  0 8px 32px rgba(0,0,0,0.10);
 
   /* --- shadcn mapping --- */
-  --background: var(--bg-1);
-  --foreground: var(--text-primary);
   --card: var(--bg-1);
   --card-foreground: var(--text-primary);
   --popover: var(--bg-1);
   --popover-foreground: var(--text-primary);
-  --primary: var(--brand);
   --primary-foreground: var(--text-inverse);
   --secondary: var(--bg-2);
   --secondary-foreground: var(--text-secondary);
@@ -54,9 +54,7 @@
   --accent-foreground: var(--text-primary);
   --destructive: var(--error);
   --destructive-foreground: var(--text-inverse);
-  --border: var(--border-token);
   --input: var(--bg-2);
-  --ring: var(--brand);
   --radius: 0rem;
 
   /* --- Sidebar mapping --- */
@@ -66,7 +64,7 @@
   --sidebar-primary-foreground: var(--text-inverse);
   --sidebar-accent: var(--bg-3);
   --sidebar-accent-foreground: var(--text-primary);
-  --sidebar-border: var(--border-token);
+  --sidebar-border: #E4E4E7;
   --sidebar-ring: var(--brand);
 
   /* --- Chart mapping --- */
@@ -78,27 +76,27 @@
 }
 
 [data-theme="dark"] {
+  --brand: #6366F1;
+  --bg-1: #0A0A0F;
+  --bg-2: #111118;
+  --bg-3: #18181F;
+  --text-primary: #FAFAFA;
+  --border: #27272A;
+
   /* --- Brand (légèrement éclairci pour dark bg) --- */
-  --brand:            #6366F1;   /* Indigo-500 — lisible sur dark */
   --brand-hover:      #818CF8;
   --brand-subtle:     #1A1A2E;
   --brand-muted:      #1E1E38;
 
-  /* --- Backgrounds (élévation 3 niveaux) --- */
-  --bg-1:             #0A0A0F;   /* Base absolute */
-  --bg-2:             #111118;   /* Cards, panels */
-  --bg-3:             #18181F;   /* Hover states */
-
   /* --- Text --- */
-  --text-primary:     #FAFAFA;   /* Zinc-50 */
-  --text-secondary:   #A1A1AA;   /* Zinc-400 */
-  --text-muted:       #52525B;   /* Zinc-600 */
+  --text-secondary:   #A1A1AA;
+  --text-muted:       #52525B;
   --text-inverse:     #0A0A0B;
   --text-brand:       #818CF8;
 
   /* --- Borders --- */
-  --border-token:     #27272A;   /* Zinc-800 */
-  --border-strong:    #3F3F46;   /* Zinc-700 */
+  --border-token:     #27272A;
+  --border-strong:    #3F3F46;
   --border-brand:     #6366F1;
 
   /* --- States --- */
@@ -128,7 +126,6 @@
   --accent-foreground: var(--text-primary);
   --destructive: var(--error);
   --destructive-foreground: var(--text-inverse);
-  --border: var(--border-token);
   --input: var(--bg-3);
   --ring: var(--brand);
 
@@ -139,7 +136,7 @@
   --sidebar-primary-foreground: var(--text-inverse);
   --sidebar-accent: var(--bg-3);
   --sidebar-accent-foreground: var(--text-primary);
-  --sidebar-border: var(--border-token);
+  --sidebar-border: #27272A;
   --sidebar-ring: var(--brand);
 
   /* --- Chart mapping --- */

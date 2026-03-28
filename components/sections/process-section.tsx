@@ -1,77 +1,116 @@
 "use client";
 
-import { Search, Settings, BarChart3 } from "lucide-react";
+import { Search, Settings, GraduationCap, LifeBuoy, Check } from "lucide-react";
 import { useRef } from "react";
 import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 const steps = [
   {
-    number: "01",
     icon: Search,
-    title: "Audit gratuit",
-    description: "On analyse vos processus, vos canaux de communication et vos points de friction. On identifie exactement où vous perdez du temps et de l'argent.",
+    title: "Audit Métier & IA",
+    description: "Analyse profonde de vos goulots d'étranglement et identification des opportunités d'automatisation rentables.",
+    color: "bg-blue-500",
   },
   {
-    number: "02",
     icon: Settings,
-    title: "Déploiement sur mesure",
-    description: "On configure votre système IA en fonction de votre secteur, votre ton, vos besoins spécifiques. Aucune connaissance technique requise de votre côté.",
+    title: "Configuration Technique",
+    description: "Déploiement de vos chatbots WhatsApp et workflows n8n sur mesure, connectés à vos outils existants.",
+    color: "bg-purple-500",
   },
   {
-    number: "03",
-    icon: BarChart3,
-    title: "Croissance mesurable",
-    description: "Vous suivez vos résultats en temps réel. Chaque semaine, votre système devient plus performant. Vous scalez sans recruter.",
+    icon: GraduationCap,
+    title: "Formation & Onboarding",
+    description: "Accompagnement de vos équipes pour une prise en main fluide du nouveau système d'exploitation IA.",
+    color: "bg-amber-500",
+  },
+  {
+    icon: LifeBuoy,
+    title: "Support & Optimisation",
+    description: "Suivi hebdomadaire de la performance et ajustements continus pour maximiser votre ROI.",
+    color: "bg-green-500",
   },
 ];
+
+import { Button } from "@/components/ui/button";
 
 export function ProcessSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const progress = useScrollProgress(sectionRef);
 
   return (
-    <section id="processus" ref={sectionRef} className="bg-bg-2 py-24 md:py-32 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 md:px-12">
-        <ScrollReveal progress={progress} offset={40} delay={0.1}>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text-primary mb-6 text-center">
-            3 étapes pour automatiser<br className="hidden md:block" /> votre croissance
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal progress={progress} offset={30} delay={0.2}>
-          <p className="text-text-secondary text-center mb-16 max-w-lg mx-auto">
-            Un processus simple, rapide et sans friction. Zéro compétence technique requise.
-          </p>
-        </ScrollReveal>
+    <section id="processus" ref={sectionRef} className="relative bg-bg-2 py-24 md:py-32 overflow-hidden border-y border-border">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col items-center text-center space-y-4 mb-20">
+          <ScrollReveal progress={progress} direction="up" delay={0.1}>
+            <span className="text-sm font-bold uppercase tracking-widest text-brand">Le Processus</span>
+          </ScrollReveal>
+          <ScrollReveal progress={progress} direction="up" delay={0.2}>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text-primary">
+              De l&apos;audit au déploiement <br className="hidden md:block" />
+              <span className="text-text-secondary">en un temps record</span>
+            </h2>
+          </ScrollReveal>
+        </div>
 
-        <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent -translate-y-1/2" />
+        <div className="relative max-w-4xl mx-auto">
+          {/* Vertical Progress Bar Background */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-border -translate-x-1/2 hidden md:block" />
+          
+          {/* Animated Progress Fill */}
+          <div 
+            className="absolute left-6 md:left-1/2 top-0 w-1 bg-brand -translate-x-1/2 z-10 transition-all duration-300 ease-out hidden md:block" 
+            style={{ height: `${progress * 100}%` }}
+          />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((step, i) => (
-              <ScrollReveal
-                key={i}
-                progress={progress}
-                offset={100}
-                delay={0.3 + (i * 0.1)}
-                speed={0.9 + (i * 0.1)}
-              >
-                <div className="relative group text-center h-full">
-                  {/* Step number */}
-                  <div className="relative z-10 w-20 h-20 rounded-none bg-bg-3 border border-border flex items-center justify-center mx-auto mb-6 group-hover:bg-brand/10 group-hover:border-brand/30 transition-all duration-300">
-                    <step.icon size={32} className="text-brand" />
+          <div className="space-y-16">
+            {steps.map((step, i) => {
+              const isActive = progress > (i / steps.length);
+              return (
+                <div key={i} className={`relative flex flex-col md:flex-row items-center ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                  {/* Step Marker */}
+                  <div className="translate-y-0 absolute left-6 md:left-1/2 w-12 h-12 rounded-full bg-background border-4 border-border z-20 -translate-x-1/2 flex items-center justify-center transition-colors duration-500"
+                    style={{ 
+                      borderColor: isActive ? 'var(--brand)' : 'var(--border)',
+                      backgroundColor: isActive ? 'var(--brand)' : 'var(--bg-1)'
+                    }}
+                  >
+                    {isActive ? <Check size={20} className="text-white" /> : <span className="text-sm font-bold text-text-muted">{i + 1}</span>}
                   </div>
 
-                  <span className="inline-block text-xs font-mono text-brand tracking-widest mb-3">{step.number}</span>
-                  <h3 className="text-xl font-bold text-text-primary mb-4">{step.title}</h3>
-                  <p className="text-sm text-text-secondary leading-relaxed">{step.description}</p>
+                  {/* Content Card */}
+                  <div className={`w-full md:w-[45%] ml-12 md:ml-0`}>
+                    <ScrollReveal 
+                      progress={progress} 
+                      direction={i % 2 === 0 ? "left" : "right"} 
+                      delay={0.1}
+                      className="p-8 bg-background border border-border rounded-none shadow-sm hover:shadow-xl transition-all duration-300"
+                    >
+                      <div className={`w-12 h-12 ${step.color} text-white flex items-center justify-center mb-6 rounded-none`}>
+                        <step.icon size={24} />
+                      </div>
+                      <h3 className="text-xl font-bold text-text-primary mb-3">{step.title}</h3>
+                      <p className="text-text-secondary leading-relaxed">
+                        {step.description}
+                      </p>
+                    </ScrollReveal>
+                  </div>
+                  
+                  {/* Spacer for the other side */}
+                  <div className="hidden md:block w-[45%]" />
                 </div>
-              </ScrollReveal>
-            ))}
+              );
+            })}
           </div>
         </div>
+
+        <ScrollReveal progress={progress} direction="up" delay={0.8} className="mt-20 text-center">
+            <Button size="lg" className="h-14 px-10 text-lg font-bold bg-brand hover:bg-brand/90 text-white rounded-none shadow-lg hover:shadow-brand/20 transition-all">
+                Démarrer mon audit gratuit
+            </Button>
+        </ScrollReveal>
       </div>
     </section>
   );
 }
+
