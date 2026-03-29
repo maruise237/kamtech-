@@ -9,7 +9,6 @@ import { CollectionSection } from "@/components/sections/collection-section";
 import { ForWhoSection } from "@/components/sections/for-who-section";
 import { TechnologySection } from "@/components/sections/technology-section";
 import { EditorialSection } from "@/components/sections/editorial-section";
-import { FeaturedProductsSection } from "@/components/sections/featured-products-section";
 import { PhilosophySection } from "@/components/sections/philosophy-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { FaqSection } from "@/components/sections/faq-section";
@@ -29,7 +28,6 @@ export default function Home() {
       <ForWhoSection />
       <TechnologySection />
       <EditorialSection />
-      <FeaturedProductsSection />
       <PhilosophySection />
       <TestimonialsSection />
       <FaqSection />
