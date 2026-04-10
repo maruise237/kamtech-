@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
 import KamtechChat from "@/components/KamtechChat"
+import ElevenLabsWidget from "@/components/ElevenLabsWidget"
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         >
           {children}
           <KamtechChat />
+          <ElevenLabsWidget />
         </ThemeProvider>
       </body>
     </html>
